@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Trang chủ - Hệ thống điện</title>
+
+    <!-- Liên kết đến file CSS -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="./Logo.png" style="width: 12px; height: 12px;">
+</head>
+
+<body>
+    
+
+    <!-- TRANG CHỦ - ẢNH NỀN NẰM TRONG CSS -->
+    <main class="homepage">
+        <div class="background-slider" aria-hidden="true">
+
+            <!-- ẢNH NỀN SỐ 1 -->
+            <div class="background-slide slide-1"></div>
+
+            <!-- ẢNH NỀN SỐ 2 -->
+            <div class="background-slide slide-2"></div>
+
+        </div>
+        <!-- KHU VỰC BÊN TRÁI MÀN HÌNH -->
+        <section class="sidebar">
+
+            <!-- TIÊU ĐỀ TRANG CHỦ -->
+            <header class="sidebar-header">
+    <div class="header-top">
+        <span class="status-dot"></span>
+        POWER SYSTEM DASHBOARD
+    </div>
+
+    <h1>HỆ THỐNG ĐIỆN</h1>
+
+    <div class="header-line"></div>
+
+    <h2>TRANG CHỦ / HÒA PHÁT DUNG QUẤT</h2>
+</header>
+
+            <!-- DANH SÁCH 4 THẺ XẾP DỌC -->
+            <button
+                id="toggleMenu"
+                class="toggle-menu"
+                type="button"
+                aria-expanded="true"
+                aria-controls="cardList"
+                aria-label="Thu gọn danh mục"
+            >
+                <span id="toggleIcon">❮</span>
+                <span id="toggleText">Thu gọn</span>
+            </button>
+
+            <!-- DANH SÁCH 4 THẺ XẾP DỌC -->
+            <nav class="card-list" id="cardList">
+
+                <!-- THẺ 1: RELAY -->
+                <a href="https://script.google.com/macros/s/AKfycbzThD7g-bHh17lelALwiSYNUDPhwvxvJaUBzFQVcKyj1DyvfnxKH5nelVz9UDA2wCLn/exec"
+                    class="menu-card"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    <span>⚡ Relay</span>
+                    <span class="arrow">›</span>
+                </a>
+
+                <!-- THẺ 2: THIẾT BỊ ĐIỆN -->
+                <a href="thietbi.html" class="menu-card">
+                    <span>⚙️ Thiết bị điện</span>
+                    <span class="arrow">›</span>
+                </a>
+
+                <!-- THẺ 3: CÂN BẰNG CÔNG SUẤT -->
+                <a href="canbangcongsuat.html" class="menu-card">
+                    <span>📊 Cân bằng công suất</span>
+                    <span class="arrow">›</span>
+                </a>
+
+                <!-- THẺ 4: ĐIỀU TIẾT NĂNG LƯỢNG -->
+                <a href="dieutietnangluong.html" class="menu-card">
+                    <span>🔋 Điều tiết năng lượng</span>
+                    <span class="arrow">›</span>
+                </a>
+
+            </nav>
+
+        </section>
+
+    </main>
+<script src="script.js"></script>
+</body>
+</html>

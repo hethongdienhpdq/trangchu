@@ -1,0 +1,473 @@
+
+/* ==========================================
+   1. THIẾT LẬP CHUNG
+========================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+}
+
+/* ==========================================
+   2. BACKGROUND TRANG CHỦ
+
+   BẠN THAY LINK ẢNH NỀN TẠI ĐÂY
+========================================== */
+
+.homepage {
+    .background-slider {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+}
+
+/* Thiết lập chung cho các hình nền */
+.background-slide {
+    position: absolute;
+    inset: 0;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    will-change: transform;
+}
+
+/* ==========================================
+   VỊ TRÍ THAY LINK HÌNH NỀN
+========================================== */
+
+/* HÌNH NỀN THỨ NHẤT */
+.slide-1 {
+    background-image: url("./IMG_9614.jpg");
+    transform: translateX(0);
+}
+
+/* HÌNH NỀN THỨ HAI */
+.slide-2 {
+    background-image: url("./3-tbny-dat-viet-vac-17935390761361362152213-1794727599531576436966.png");
+    transform: translateX(100%);
+}
+
+/* ==========================================
+   HIỆU ỨNG TRƯỢT NGANG
+========================================== */
+
+.background-slide {
+    transition: transform 1s ease-in-out;
+}
+
+/* Ảnh ở giữa màn hình */
+.background-slide.active {
+    transform: translateX(0);
+}
+
+/* Ảnh trượt sang bên trái */
+.background-slide.to-left {
+    transform: translateX(-100%);
+}
+
+/* Ảnh nằm bên phải chờ hiển thị */
+.background-slide.to-right {
+    transform: translateX(100%);
+}
+    position: relative;
+    isolation: isolate;
+
+    min-height: 100vh;
+    overflow: hidden;
+
+    /* Màu nền dự phòng */
+    background-color: #102d50;
+
+    display: flex;
+    align-items: flex-start;
+
+    padding: 35px 40px;
+}
+
+/* ==========================================
+   3. KHU VỰC MENU BÊN TRÁI
+========================================== */
+
+.sidebar {
+    width: 330px;
+    max-width: 100%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+/* ==========================================
+   4. TIÊU ĐỀ TRANG CHỦ
+
+   Tiêu đề nằm cao phía trên,
+   căn giữa theo chiều rộng thanh menu
+========================================== */
+
+
+
+/* ==========================================
+   5. DANH SÁCH 4 THẺ
+
+   Hiển thị đầy đủ 4 thẻ theo chiều dọc.
+   Không sử dụng thanh cuộn.
+========================================== */
+
+.card-list {
+    display: flex;
+    flex-direction: column;
+
+    /* Khoảng cách đều giữa các thẻ */
+    gap: 20px;
+
+    width: 100%;
+
+    /* Tự động hiển thị toàn bộ 4 thẻ */
+    height: auto;
+
+    overflow: visible;
+}
+
+/* ==========================================
+   6. THIẾT KẾ CARD
+========================================== */
+
+.menu-card {
+    position: relative;
+    overflow: hidden;
+
+    width: 100%;
+    min-height: 75px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 20px;
+
+    background: rgba(16, 45, 80, 0.9);
+
+    border: 1px solid #478ac0;
+    border-radius: 12px;
+
+    color: white;
+    text-decoration: none;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+/* ==========================================
+   7. HIỆU ỨNG KHI ĐƯA CHUỘT VÀO THẺ
+========================================== */
+
+.menu-card:hover {
+    transform: translateX(6px);
+
+    background: #215d95;
+
+    box-shadow: 0 0 16px #52bcff;
+}
+
+.arrow {
+    font-size: 24px;
+}
+
+/* ==========================================
+   8. HIỆU ỨNG ÁNH SÁNG QUÉT CHÉO
+
+   Quét từ trái sang phải
+   Chu kỳ: 5 giây
+========================================== */
+
+.menu-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: -120%;
+    left: -80%;
+
+    width: 45%;
+    height: 320%;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.45),
+        transparent
+    );
+
+    transform: rotate(30deg);
+
+    pointer-events: none;
+
+    animation: diagonalSweep 5s infinite;
+}
+
+@keyframes diagonalSweep {
+
+    0% {
+        left: -80%;
+    }
+
+    25% {
+        left: 160%;
+    }
+
+    100% {
+        left: 160%;
+    }
+
+}
+
+/* ==========================================
+   9. GIAO DIỆN TRÊN ĐIỆN THOẠI
+========================================== */
+
+@media (max-width: 600px) {
+
+    .homepage {
+        padding: 25px 20px;
+    }
+
+    .sidebar {
+        width: 100%;
+        max-width: 330px;
+    }
+
+    .sidebar-header {
+        margin-bottom: 30px;
+    }
+
+    .sidebar-header h1 {
+        font-size: 25px;
+    }
+
+    .sidebar-header h2 {
+        font-size: 20px;
+    }
+
+    .card-list {
+        gap: 15px;
+    }
+
+    .menu-card {
+        min-height: 70px;
+        font-size: 15px;
+    }
+}
+
+/* Tắt chuyển động nếu thiết bị yêu cầu */
+@media (prefers-reduced-motion: reduce) {
+    .menu-card::before {
+        animation: none;
+    }
+}
+
+/* ==========================================
+   10. NÚT THU GỌN / MỞ RỘNG MENU
+========================================== */
+
+.toggle-menu {
+    align-self: flex-start;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    padding: 9px 15px;
+    margin-bottom: 15px;
+
+    background: rgba(16, 45, 80, 0.9);
+    color: #ffffff;
+
+    border: 1px solid #478ac0;
+    border-radius: 8px;
+
+    font-size: 14px;
+    cursor: pointer;
+
+    transition: background 0.3s ease;
+}
+
+.toggle-menu:hover {
+    background: #215d95;
+}
+
+/* ==========================================
+   11. HIỆU ỨNG ẨN / HIỆN 4 THẺ
+========================================== */
+
+.card-list {
+    max-height: 500px;
+    opacity: 1;
+    visibility: visible;
+
+    transition:
+        max-height 0.4s ease,
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+}
+
+/* Khi menu được thu gọn */
+.card-list.collapsed {
+    max-height: 0;
+    opacity: 0;
+    visibility: hidden;
+    overflow: hidden;
+}
+.sidebar-header {
+    position: relative;
+    left: calc(50vw - 50%);
+    transform: translateX(-50%);
+    text-align: center;
+    width: max-content;
+    z-index: 10;
+}
+.sidebar-header {
+    position: relative;
+    left: 50vw;
+    transform: translateX(calc(-50% - 40px));
+    text-align: center;
+    width: max-content;
+    padding: 15px 45px;
+    background: rgba(10, 35, 65, 0.55);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 15px;
+    z-index: 10;
+}
+
+.sidebar-header h1 {
+    font-size: 40px;
+    color: white;
+    margin: 0;
+}
+
+.sidebar-header h2 {
+    font-size: 24px;
+    color: #bceaff;
+    margin: 8px 0 0;
+}
+/* =========================================
+   HEADER - SCADA CONTROL CENTER
+========================================= */
+
+.sidebar-header {
+    position: relative;
+    left: 50%;
+    transform: translateX(calc(40vw - 50% - 20px));
+
+    width: max-content;
+    max-width: 90vw;
+    box-sizing: border-box;
+    text-align: center;
+
+    padding: 20px 50px;
+    margin-bottom: 45px;
+
+    background: linear-gradient(
+        135deg,
+        rgba(5, 20, 38, 0.94),
+        rgba(10, 48, 76, 0.88)
+    );
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    border: 1px solid rgba(55, 215, 208, 0.5);
+    border-bottom: 3px solid #37d7d0;
+    border-radius: 12px;
+
+    box-shadow:
+        0 8px 30px rgba(0, 0, 0, 0.35),
+        0 0 18px rgba(55, 215, 208, 0.15);
+
+    z-index: 10;
+
+    animation: headerAppear 0.8s ease-out;
+}
+
+/* Tiêu đề chính */
+.sidebar-header h1 {
+    font-family: Arial, sans-serif;
+    font-size: 42px;
+    font-weight: 800;
+    letter-spacing: 2px;
+
+    color: #ffffff;
+    margin: 0;
+
+    text-shadow: 0 3px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Tiêu đề phụ */
+.sidebar-header h2 {
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 2px;
+
+    color: #37d7d0;
+    margin: 12px 0 0;
+}
+
+/* Hiệu ứng xuất hiện */
+@keyframes headerAppear {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+/* Tương thích màn hình nhỏ */
+@media (max-width: 768px) {
+    .sidebar-header {
+        padding: 15px 20px;
+        max-width: 90vw;
+    }
+
+    .sidebar-header h1 {
+        font-size: 28px;
+    }
+
+    .sidebar-header h2 {
+        font-size: 14px;
+    }
+}
+.sidebar-header .header-top {
+    color: #37d7d0;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.sidebar-header .header-line {
+    width: 140px;
+    height: 2px;
+    margin: 12px auto;
+    background: #37d7d0;
+    box-shadow: 0 0 12px #37d7d0;
+}
